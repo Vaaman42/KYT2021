@@ -8,20 +8,20 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    #region Properties
+
+    private Person Interviewee;
+
+    #endregion
+
     #region Serialized Fields
 
-    [SerializeField] Person Interviewee;
     [SerializeField] TextMeshProUGUI RecruiterDialog;
     [SerializeField] TextMeshProUGUI IntervieweeDialog;
     [SerializeField] Slider DialogTimer;
     [SerializeField] List<Button> BtnQuestions;
 
     #endregion
-
-    void OnStart()
-    {
-        NextDialog();
-    }
 
     public void NewPersonArrived(Person newPerson)
     {
@@ -46,26 +46,32 @@ public class DialogManager : MonoBehaviour
 
     private IEnumerator ShowRecruiterDialog(Question question)
     {
-        string message;
+        string message = "";
         switch (question)
         {
-            case Question.Test1:
-                message = "Question: Test 1";
+            case Question.Presentation:
+                message = "Pouvez-vous vous présenter en quelques phrases?";
                 break;
-            case Question.Test2:
-                message = "Question: Test 2";
+            case Question.WantedPost:
+                message = "Pour quel job postulez-vous?";
                 break;
-            case Question.Test3:
-                message = "Question: Test 3";
+            case Question.Experience:
+                message = "Quelle est votre expérience dans ce secteur?";
                 break;
-            case Question.Test4:
-                message = "Question: Test 4";
+            case Question.Motivation:
+                message = "Pourquoi voulez-vous rejoindre notre entreprise?";
                 break;
-            case Question.Test5:
-                message = "Question: Test 5";
+            case Question.Qualities:
+                message = "Quelle est votre meilleure qualité?";
                 break;
-            default:
-                message = "Default message";
+            case Question.Defaults:
+                message = "Quel est votre plus gros défaut?";
+                break;
+            case Question.Serious:
+                message = "Êtes-vous quelqu'un de sérieux?";
+                break;
+            case Question.Hobby:
+                message = "Avez-vous un hobby?";
                 break;
         }
         IntervieweeDialog.text = "";
@@ -106,7 +112,6 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             time -= 0.01f;
             var value = time / 20f;
-            Debug.Log(value);
             DialogTimer.value = value;
         }
         ToggleDialog(false);

@@ -14,19 +14,23 @@ namespace Assets.Scripts
 
         #region Serialized Fields
 
-        //[SerializeField] AudioClip Voice;
-        //[SerializeField] float VoicePitch;
+        [SerializeField] List<string> Answers;
+        [SerializeField] List<string> RanOutOfTimeMessages;
+        [SerializeField] List<string> AlreadyAskedMessages;
 
         #endregion
 
         public Person()
         {
             annoyment = 0;
-            QuestionAsked.Add(Question.Test1, false);
-            QuestionAsked.Add(Question.Test2, false);
-            QuestionAsked.Add(Question.Test3, false);
-            QuestionAsked.Add(Question.Test4, false);
-            QuestionAsked.Add(Question.Test5, false);
+            QuestionAsked.Add(Question.Presentation, false);
+            QuestionAsked.Add(Question.WantedPost, false);
+            QuestionAsked.Add(Question.Experience, false);
+            QuestionAsked.Add(Question.Motivation, false);
+            QuestionAsked.Add(Question.Qualities, false);
+            QuestionAsked.Add(Question.Defaults, false);
+            QuestionAsked.Add(Question.Serious, false);
+            QuestionAsked.Add(Question.Hobby, false);
         }
 
         private bool WasQuestionAsked(Question question)
@@ -38,63 +42,15 @@ namespace Assets.Scripts
         {
             if (WasQuestionAsked(question))
             {
-                return QuestionAlreadyAsked();
+                return AlreadyAskedMessages[annoyment >= AlreadyAskedMessages.Count ? annoyment++ : AlreadyAskedMessages.Count - 1];
             }
             QuestionAsked[question] = true;
-            return AnswerQuestion(question);
-        }
-
-        private string AnswerQuestion(Question question)
-        {
-            switch (question)
-            {
-                case Question.Test1:
-                    return "Answer to Test1";
-                case Question.Test2:
-                    return "Answer to Test2";
-                case Question.Test3:
-                    return "Answer to Test3";
-                case Question.Test4:
-                    return "Answer to Test4";
-                case Question.Test5:
-                    return "Answer to Test5";
-                default:
-                    return "Default Answer";
-            }
+            return Answers[(int)question];
         }
 
         public string RanOutOfTime()
         {
-            switch(annoyment++)
-            {
-                default:
-                case 0:
-                    return "... Is everything alright?";
-                case 1:
-                    return "Hello?";
-                case 2:
-                    return "Are we done, or...?";
-                case 3:
-                    LeaveInterview();
-                    return "Ok, I guess we're done then. Goodbye.";
-            }
-        }
-
-        private string QuestionAlreadyAsked()
-        {
-            switch(annoyment++)
-            {
-                default:
-                case 0:
-                    return "I think you already asked me that...";
-                case 1:
-                    return "You already asked that.";
-                case 2:
-                    return "Are you listening to me? I already answered that.";
-                case 3:
-                    LeaveInterview();
-                    return "That's it, I'm leaving.";
-            }
+            return RanOutOfTimeMessages[annoyment >= RanOutOfTimeMessages.Count ? annoyment++ : RanOutOfTimeMessages.Count-1];
         }
 
         private void LeaveInterview()

@@ -2,9 +2,12 @@ using UnityEngine;
 
 public enum Question
 {
-    Test1,
-    Test2,
-    Test3,
-    Test4,
-    Test5
+    Presentation = 0,
+    WantedPost = 1,
+    Experience = 2,
+    Motivation = 3,
+    Qualities = 4,
+    Defaults = 5,
+    Serious = 6,
+    Hobby = 7
 }
