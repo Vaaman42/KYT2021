@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] DialogManager DialogManager;
     [SerializeField] List<Person> Interviewees;
+    [SerializeField] SoundManager SoundManager;
 
     #endregion
+
     // Start is called before the first frame update
     void Start()
     {
