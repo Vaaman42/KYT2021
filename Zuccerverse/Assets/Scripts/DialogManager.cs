@@ -103,8 +103,8 @@ public class DialogManager : MonoBehaviour
         float time = 20f;
         while (time > 0)
         {
-            yield return new WaitForSeconds(0.5f);
-            time -= 0.5f;
+            yield return new WaitForSeconds(0.01f);
+            time -= 0.01f;
             var value = time / 20f;
             Debug.Log(value);
             DialogTimer.value = value;
