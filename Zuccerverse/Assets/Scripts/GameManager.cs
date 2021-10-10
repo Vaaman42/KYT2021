@@ -5,23 +5,60 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Properties
+
+    int Index = 0;
+    bool isInterviewInProgress = false;
+
+    #endregion
+
     #region Serialized Fields
 
     [SerializeField] DialogManager DialogManager;
-    [SerializeField] List<Person> Interviewees;
     [SerializeField] SoundManager SoundManager;
+    [SerializeField] List<Person> Interviewees;
+    [SerializeField] List<GameObject> Posts;
+    [SerializeField] GameObject Chair;
+    [SerializeField] GameObject ScrollViewContent;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SoundManager.PlaySoft();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDoorClick()
     {
-        
+        if (isInterviewInProgress)
+        {
+            StopInterview();
+            SoundManager.PlaySoft();
+            //Show Feedback
+        }
+        else if (Index == Interviewees.Count)
+        {
+            Debug.Log("Fin de la démo");
+        }
+        else
+        {
+            var person = Instantiate(Interviewees[Index].gameObject);
+            person.transform.SetParent(Chair.transform, false);
+            Posts[Index].SetActive(true);
+            DialogManager.NewPersonArrived(Interviewees[Index]);
+            isInterviewInProgress = true;
+            SoundManager.PlayStress();
+        }
     }
+
+    private void StopInterview()
+    {
+        DialogManager.IntervieweeLeaving();
+        Chair.transform.DetachChildren();
+        Posts[Index].SetActive(false);
+        isInterviewInProgress = false;
+        Index++;
+    }
+
 }

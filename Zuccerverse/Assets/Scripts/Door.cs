@@ -26,9 +26,4 @@ public class Door : MonoBehaviour
     {
         DoorOpen.SetActive(false);
     }
-
-    public void ClickOnDoor()
-    {
-        //...
-    }
 }

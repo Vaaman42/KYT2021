@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3963910008931242920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3963910008931242902}
+  - component: {fileID: 3963910008931242921}
+  - component: {fileID: 3963910008931242900}
+  - component: {fileID: 3963910008931242903}
+  m_Layer: 0
+  m_Name: Darren Luciano
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3963910008931242902
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963910008931242920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 204.61, y: 278.601}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3963910008931242921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963910008931242920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d2a026fa10b1444ab9ff9b34243cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Answers:
+  - "Je m'appelle Darren Luciano, j'ai 25 ans et je suis c\xE9libataire, pourriez-vous
+    me passer le num de la secr\xE9taire \xE0 la fin de l'entretien d'embauche"
+  - "Le poste d'aide service client\xE8le me plairai bien !"
+  - "J'ai \xE9t\xE9 dipl\xF4m\xE9 en communication au bout de 7 ans"
+  - "Je voudrai mettre en pratique mes ann\xE9es d'\xE9tude"
+  - "Je suis tr\xE8s f\xEAtard et tr\xE8s sportif"
+  - "J'ai toujours la gueule de bois les lendemain de soir\xE9e"
+  - Je fini toujours mon verre
+  - "Je fais tr\xE8s souvent du BMX"
+  RanOutOfTimeMessages:
+  - Tout va bien?
+  AlreadyAskedMessages:
+  - "Vous m'avez d\xE9j\xE0 pos\xE9 cette question..."
+--- !u!222 &3963910008931242900
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963910008931242920}
+  m_CullTransparentMesh: 1
+--- !u!114 &3963910008931242903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963910008931242920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a650625190da98a4d9bcb3213c9d8ac3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
