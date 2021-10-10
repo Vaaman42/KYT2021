@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<Person> Interviewees;
     [SerializeField] List<GameObject> Posts;
     [SerializeField] GameObject Chair;
+    [SerializeField] GameObject ScrollViewContent;
 
     #endregion
 
@@ -32,11 +33,8 @@ public class GameManager : MonoBehaviour
     {
         if (isInterviewInProgress)
         {
-            DialogManager.IntervieweeLeaving();
-            Chair.transform.DetachChildren();
-            Posts[Index].SetActive(false);
-            isInterviewInProgress = false;
-            Index++;
+            StopInterview();
+            SoundManager.PlaySoft();
             //Show Feedback
         }
         else if (Index == Interviewees.Count)
@@ -50,6 +48,17 @@ public class GameManager : MonoBehaviour
             Posts[Index].SetActive(true);
             DialogManager.NewPersonArrived(Interviewees[Index]);
             isInterviewInProgress = true;
+            SoundManager.PlayStress();
         }
     }
+
+    private void StopInterview()
+    {
+        DialogManager.IntervieweeLeaving();
+        Chair.transform.DetachChildren();
+        Posts[Index].SetActive(false);
+        isInterviewInProgress = false;
+        Index++;
+    }
+
 }
