@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogManager DialogManager;
     [SerializeField] SoundManager SoundManager;
     [SerializeField] List<Person> Interviewees;
+    [SerializeField] List<GameObject> Posts;
     [SerializeField] GameObject Chair;
 
     #endregion
@@ -17,9 +18,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var person = Instantiate(Interviewees[0].gameObject);
+        var person = Instantiate(Interviewees[1].gameObject);
         person.transform.SetParent(Chair.transform, false);
-        DialogManager.NewPersonArrived(Interviewees[0]);
+        Posts[1].SetActive(true);
+        DialogManager.NewPersonArrived(Interviewees[1]);
     }
 
     // Update is called once per frame
