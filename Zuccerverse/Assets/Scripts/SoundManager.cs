@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-	public AudioMixer audio_mixer;
+	//public AudioMixer audio_mixer;
 
 	public bool channel_1;
 	public bool channel_2;
@@ -49,8 +49,8 @@ public class SoundManager : MonoBehaviour
 
 
 
-		audio_channel_1.outputAudioMixerGroup = audio_mixer.FindMatchingGroups("channel_1")[0];
-		audio_channel_2.outputAudioMixerGroup = audio_mixer.FindMatchingGroups("channel_2")[0];
+		/*audio_channel_1.outputAudioMixerGroup = audio_mixer.FindMatchingGroups("channel_1")[0];
+		audio_channel_2.outputAudioMixerGroup = audio_mixer.FindMatchingGroups("channel_2")[0];*/
 
 
 
@@ -102,8 +102,8 @@ public class SoundManager : MonoBehaviour
 
 	public void SetVolumes()
 	{
-		audio_mixer.SetFloat("channel_1", audio_channel_1_vol);
-		audio_mixer.SetFloat("channel_2", audio_channel_2_vol);
+		/*audio_mixer.SetFloat("channel_1", audio_channel_1_vol);
+		audio_mixer.SetFloat("channel_2", audio_channel_2_vol);*/
 
 
 

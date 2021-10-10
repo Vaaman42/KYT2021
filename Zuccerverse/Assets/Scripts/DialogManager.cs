@@ -23,6 +23,18 @@ public class DialogManager : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        ToggleDialog(false);
+    }
+
+    public void IntervieweeLeaving()
+    {
+        Interviewee = null;
+        ToggleDialog(false);
+        StopAllCoroutines();
+    }
+
     public void NewPersonArrived(Person newPerson)
     {
         Interviewee = newPerson;
