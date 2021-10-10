@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3963910008931242900}
   - component: {fileID: 3963910008931242903}
   m_Layer: 0
-  m_Name: "Innocent C\xE9saire"
+  m_Name: Emilie Janssens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -131.81363}
-  m_SizeDelta: {x: 204.61, y: 542.2282}
+  m_AnchoredPosition: {x: -14.9238, y: -47.0674}
+  m_SizeDelta: {x: 247.8953, y: 619.0383}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3963910008931242921
 MonoBehaviour:
@@ -50,19 +50,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d2a026fa10b1444ab9ff9b34243cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   Answers:
-  - "Je m'appelle Innocent C\xE9saire, j'ai 21 ans et je viens juste d'\xEAtre dipl\xF4m\xE9
-    de l'Universit\xE9 catholique de la Tr\xE8s Sainte Conception"
-  - "Je postule pour devenir le pr\xEAtre de votre \xE9glise"
-  - "J'ai tr\xE8s souvent organis\xE9 des c\xE9r\xE9monies religieuse \xE0 l'\xE9glise
-    de mon village"
-  - Seul mon Seigneur connait ma grande foie envers lui
-  - "Je me l\xE8ve tr\xE8s t\xF4t le matin"
-  - Mon addiction au vin de messe...
-  - "Je prie mon Seigneur 5 fois par jour et je respecte \xE0 la lettre la Sainte
-    Bible"
-  - Seul ma foi envers mon Seigneur est importante
+  - "Je m'appelle Emilie Janssens, j'ai 22 ans et j'ai \xE9t\xE9 dipl\xF4m\xE9e de
+    la HELlo"
+  - "Je suis int\xE9ress\xE9e par le poste de Community Manager"
+  - "J'ai beaucoup d'exp\xE9rience sur les r\xE9seaux sociaux"
+  - "Je fais au minimum 3 post sur chacun de mes r\xE9seaux sociaux par jour"
+  - "Je suis tr\xE8s \xE0 l'\xE9coute et tr\xE8s attentive aux autres"
+  - "Je passe trop de temps sur les r\xE9seaux sociaux et je suis tr\xE8s vite d\xE9concentr\xE9e"
+  - Je voudrais transformer ma passion en travail
+  - "J'aime r\xE9colter des informations sur les r\xE9seaux sociaux"
   RanOutOfTimeMessages:
   - Tout va bien?
   AlreadyAskedMessages:
@@ -95,7 +93,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e3eb941e5a188c84c8d9b9d2ebb2a110, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b61d374a81bba714c9d6a12cb89ef184, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -14,6 +14,7 @@ namespace Assets.Scripts
 
         #region Serialized Fields
 
+        [SerializeField] public int id;
         [SerializeField] List<string> Answers;
         [SerializeField] List<string> RanOutOfTimeMessages;
         [SerializeField] List<string> AlreadyAskedMessages;

@@ -1,14 +1,18 @@
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     #region Properties
 
     int Index = 0;
-    bool isInterviewInProgress = false;
+    List<Person> Recruited = new List<Person>();
+    [NonSerialized] public bool isInterviewInProgress = false;
+    Vector2 BasePosition;
 
     #endregion
 
@@ -19,7 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<Person> Interviewees;
     [SerializeField] List<GameObject> Posts;
     [SerializeField] GameObject Chair;
-    [SerializeField] GameObject ScrollViewContent;
+    [SerializeField] RectTransform Content;
+    [SerializeField] GameObject Tutorial;
+    [SerializeField] GameObject EndScreen;
 
     #endregion
 
@@ -27,6 +33,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SoundManager.PlaySoft();
+        Tutorial.SetActive(true);
+        BasePosition = Content.anchoredPosition;
     }
 
     public void OnDoorClick()
@@ -39,16 +47,28 @@ public class GameManager : MonoBehaviour
         }
         else if (Index == Interviewees.Count)
         {
-            Debug.Log("Fin de la démo");
+            SoundManager.PlayTension2();
+            EndGame();
         }
         else
         {
+            Tutorial.SetActive(false);
             var person = Instantiate(Interviewees[Index].gameObject);
             person.transform.SetParent(Chair.transform, false);
             Posts[Index].SetActive(true);
             DialogManager.NewPersonArrived(Interviewees[Index]);
             isInterviewInProgress = true;
+            Content.anchoredPosition = BasePosition;
             SoundManager.PlayStress();
+        }
+    }
+
+    private void EndGame()
+    {
+        EndScreen.SetActive(true);
+        foreach(var pers in Recruited)
+        {
+            EndScreen.transform.GetChild(pers.id).gameObject.SetActive(true);
         }
     }
 
@@ -58,7 +78,18 @@ public class GameManager : MonoBehaviour
         Chair.transform.DetachChildren();
         Posts[Index].SetActive(false);
         isInterviewInProgress = false;
+        SoundManager.StopRecruiterVoice();
+        SoundManager.StopIntervieweeVoice();
+        Tutorial.SetActive(true);
         Index++;
     }
 
+    public void RecruitInterviewee()
+    {
+        if (isInterviewInProgress)
+        {
+            Recruited.Add(Interviewees[Index]);
+            StopInterview();
+        }
+    }
 }

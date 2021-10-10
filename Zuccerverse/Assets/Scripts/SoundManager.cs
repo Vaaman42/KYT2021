@@ -18,6 +18,9 @@ public class SoundManager : MonoBehaviour
 
 	private AudioSource audio_channel_1;
 	private AudioSource audio_channel_2;
+	private AudioSource clip_source;
+	private AudioSource recruiter_voice_source;
+	private AudioSource interviewee_voice_source;
 
 
 
@@ -31,6 +34,9 @@ public class SoundManager : MonoBehaviour
 	private Object[] AudioArray_channel_1;
 	private Object[] AudioArray_channel_2;
 
+	[SerializeField] AudioClip Tension;
+	[SerializeField] AudioClip Tension2;
+	[SerializeField] AudioClip yaourtVoice;
 
 
 
@@ -41,6 +47,9 @@ public class SoundManager : MonoBehaviour
 
 		audio_channel_1 = (AudioSource)gameObject.AddComponent<AudioSource>();
 		audio_channel_2 = (AudioSource)gameObject.AddComponent<AudioSource>();
+		clip_source = (AudioSource)gameObject.AddComponent<AudioSource>();
+		recruiter_voice_source = (AudioSource)gameObject.AddComponent<AudioSource>();
+		interviewee_voice_source = (AudioSource)gameObject.AddComponent<AudioSource>();
 
 
 
@@ -56,7 +65,6 @@ public class SoundManager : MonoBehaviour
 
 		audio_channel_1.clip = AudioArray_channel_1[0] as AudioClip;
 		audio_channel_2.clip = AudioArray_channel_2[0] as AudioClip;
-
 
 
 		audio_channel_1.loop = true;
@@ -138,6 +146,7 @@ public class SoundManager : MonoBehaviour
 			}
 
 		}
+		clip_source.volume = 0.5f;
 
 
 	}
@@ -159,4 +168,37 @@ public class SoundManager : MonoBehaviour
 		channel_1 = true;
 		channel_2 = true;
 	}
+
+	public void PlayTension()
+    {
+		clip_source.PlayOneShot(Tension);
+    }
+	public void PlayTension2()
+    {
+		clip_source.PlayOneShot(Tension2);
+    }
+
+	public void PlayRecruiterVoice()
+    {
+		recruiter_voice_source.pitch = 1.2f;
+		recruiter_voice_source.clip = yaourtVoice;
+		recruiter_voice_source.Play();
+    }
+
+	public void PlayIntervieweeVoice(float pitch)
+    {
+		interviewee_voice_source.pitch = pitch;
+		interviewee_voice_source.clip = yaourtVoice;
+		interviewee_voice_source.Play();
+	}
+
+	public void StopRecruiterVoice()
+    {
+		recruiter_voice_source.Stop();
+    }
+
+	public void StopIntervieweeVoice()
+    {
+		interviewee_voice_source.Stop();
+    }
 }

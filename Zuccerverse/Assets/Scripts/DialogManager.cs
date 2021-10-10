@@ -11,6 +11,7 @@ public class DialogManager : MonoBehaviour
     #region Properties
 
     private Person Interviewee;
+    private float TimeBetweenLetters = 0.04f;
 
     #endregion
 
@@ -20,6 +21,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI IntervieweeDialog;
     [SerializeField] Slider DialogTimer;
     [SerializeField] List<Button> BtnQuestions;
+    [SerializeField] SoundManager SoundManager;
 
     #endregion
 
@@ -31,6 +33,8 @@ public class DialogManager : MonoBehaviour
     public void IntervieweeLeaving()
     {
         Interviewee = null;
+        IntervieweeDialog.text = "";
+        RecruiterDialog.text = "";
         ToggleDialog(false);
         StopAllCoroutines();
     }
@@ -38,6 +42,7 @@ public class DialogManager : MonoBehaviour
     public void NewPersonArrived(Person newPerson)
     {
         Interviewee = newPerson;
+        StartCoroutine(Greetings());
     }
 
     public void AskQuestion(int question)
@@ -54,6 +59,32 @@ public class DialogManager : MonoBehaviour
             btn.gameObject.SetActive(active);
             DialogTimer.gameObject.SetActive(active);
         }
+    }
+    private IEnumerator Greetings()
+    {
+        IntervieweeDialog.text = "";
+        RecruiterDialog.text = "";
+        SoundManager.PlayRecruiterVoice();
+        foreach (var c in "Bienvenue. Asseyez-vous, je vous prie".ToCharArray())
+        {
+            RecruiterDialog.text += c;
+            yield return new WaitForSeconds(TimeBetweenLetters);
+        }
+        SoundManager.StopRecruiterVoice();
+        yield return new WaitForSeconds(1f);
+        SoundManager.PlayIntervieweeVoice(0.8f);
+        foreach (var c in "Bonjour, merci".ToCharArray())
+        {
+            IntervieweeDialog.text += c;
+            yield return new WaitForSeconds(TimeBetweenLetters);
+        }
+        SoundManager.StopIntervieweeVoice();
+        yield return new WaitForSeconds(1f);
+
+        IntervieweeDialog.text = "";
+        RecruiterDialog.text = "";
+        StartCoroutine(Timer());
+        ToggleDialog(true);
     }
 
     private IEnumerator ShowRecruiterDialog(Question question)
@@ -88,11 +119,13 @@ public class DialogManager : MonoBehaviour
         }
         IntervieweeDialog.text = "";
         RecruiterDialog.text = "";
+        SoundManager.PlayRecruiterVoice();
         foreach (var c in message.ToCharArray())
         {
             RecruiterDialog.text += c;
-            yield return new WaitForSeconds(0.07f);
+            yield return new WaitForSeconds(TimeBetweenLetters);
         }
+        SoundManager.StopRecruiterVoice();
         yield return new WaitForSeconds(2f);
         StartCoroutine(ShowIntervieweeDialog(Interviewee.AskQuestion(question)));
     }
@@ -101,11 +134,13 @@ public class DialogManager : MonoBehaviour
     {
         RecruiterDialog.text = "";
         IntervieweeDialog.text = "";
+        SoundManager.PlayIntervieweeVoice(0.8f);
         foreach (var c in message.ToCharArray())
         {
             IntervieweeDialog.text += c;
-            yield return new WaitForSeconds(0.07f);
+            yield return new WaitForSeconds(TimeBetweenLetters);
         }
+        SoundManager.StopIntervieweeVoice();
         yield return new WaitForSeconds(2f);
         NextDialog();
     }
